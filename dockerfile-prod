@@ -16,9 +16,9 @@ COPY . /app
 # add the node_modules folder to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
 # install and cache dependencies
-RUN npm install
+RUN npm install --silent
 #build the project for production
-RUN yarn build# set up production environment
+RUN npm run build# set up production environment
 # the base image for this is an alpine based nginx image
 FROM nginx:alpine
 # copy the build folder from react to the root of nginx (www)
